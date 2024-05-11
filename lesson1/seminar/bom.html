@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="task">
+      <h1>Определение текущего размера окна браузера</h1>
+      <p>Ширина окна: <span class="window-size" id="width"> </span> px</p>
+      <p>Высота окна: <span class="window-size" id="height"> </span> px</p>
+    </section>
+    <section class="task">
+      <h1>Подтверждение закрытия страницы</h1>
+      <p>Это страница с подтверждением закрытия.</p>
+    </section>
+    <section class="task">
+      <h1>Управление историей переходов</h1>
+      <button class="history-button" id="goBack">Назад</button>
+      <button class="history-button" id="goForward">Вперед</button>
+    </section>
+
+    <script>
+      ////Задача 1
+      // const updateWindowSize = () => {
+      //     const widthSizeWindow = document.getElementById('width');
+      //     const heightSizeWindow = document.getElementById('height');
+      //     widthSizeWindow.textContent = window.innerWidth;
+      //     heightSizeWindow.textContent = window.innerHeight;
+      // }
+
+      // window.addEventListener('load', updateWindowSize); //на окно вешаем событие - load т.е. в момент загрузки вызываем нашу функцию
+      // window.addEventListener('resize', updateWindowSize); // resize - при изменении окна браузера
+
+      ////Задача 2
+
+      // window.addEventListener('beforeunload', function(e) {
+      //     e.preventDefault();
+      //     e.returnValue = 'Text'; //не работает
+      // });
+
+      ////Задача 3
+
+      goBack.addEventListener("click", function (e) {
+        window.history.back();
+      });
+      goForward.addEventListener("click", function (e) {
+        window.history.forward();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Метод dispatchEvent применяется для запуска созданного события. Он применяется к элементу -->
+
+    <button id="btn">Click</button>
+
+    <script>
+      //Создаем  событие клика
+      const clickEvent = new Event("click");
+
+      //Добавляем обработчик события на элемент
+      const button = document.querySelector("#btn");
+      button.addEventListener("click", function (e) {
+        console.log("Вы нажали на кнопку");
+      });
+
+      //Имитируем клик на кнопке(автоклик)
+      button.dispatchEvent(clickEvent);
+    </script>
+  </body>
+</html>

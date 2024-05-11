@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mouse.css">
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-item">Пункт 1</div>
+        <div class="menu-item">Пункт 2</div>
+        <div class="menu-item">Пункт 3</div>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item'); //вместо этого можнот создать делегирование, всплытие
+
+
+        //в обработчик добавили несколько добавили несколько обработчиков
+        menuItems.forEach(item => { 
+            item.addEventListener('mouseover', function (e) { //добавляем каждому элементу событие наведения курсора мыши и изменение при этом событии цвета
+                item.style.background = '#f0f0f0';
+            });
+
+            item.addEventListener('mouseout', function (e) { //при отведении курсора окрашивание отменяется
+                item.style.background = '';
+            });
+            
+            item.addEventListener('click', function (e) { //печать содержимого элемента при клике
+                console.log(item.textContent);;
+            });
+        });
+
+       
+    </script>
+</body>
+</html>

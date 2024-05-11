@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="mouse3.css" />
+  </head>
+  <body>
+    <div class="circle"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        //DOMContentLoaded - событие что весь контент прогрузился и с ним можно работать
+        const circle = document.querySelector(".circle");
+        let isMoving = false; // не двигается
+
+        circle.addEventListener("mouseover", () => {
+          if (!isMoving) {
+            const randomTop = Math.random() * window.innerHeight; // задаем рандомное перемещение круга по высоте и ширине экрана
+            const randomLeft = Math.random() * window.innerWidth; //
+
+            circle.style.top = `${randomTop}px`;
+            circle.style.left = `${randomLeft}px`;
+          }
+        });
+
+        circle.addEventListener("mousedown", () => {
+          isMoving = true;
+          circle.style.background = "blue";
+        });
+
+        circle.addEventListener("mouseup", () => {
+          isMoving = false;
+          circle.style.background = "red";
+        });
+      });
+    </script>
+  </body>
+</html>

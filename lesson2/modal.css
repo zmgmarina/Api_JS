@@ -1,0 +1,19 @@
+/* модальное окно располагается по центру, положение фиксированное  */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: #e3bcbc;
+    text-align: center;
+}
+
+.open-modal-btn {
+    padding: 10px 20px;
+    background-color: #716e6e;
+    color: #faf5f5;
+    cursor: pointer;
+}

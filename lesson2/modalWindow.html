@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <button class="open-modal-btn">Открыть модальное окно</button>
+    <div class="modal">
+        <h2>Модальное окно</h2>
+        <p>Нажмите вне окна, чтобы закрыть его</p>
+    </div>
+
+    <script>
+        const modal = document.querySelector('.modal');
+        const openModalBtn = document.querySelector('.open-modal-btn'); 
+        
+        openModalBtn.addEventListener('click', function () {
+            modal.style.display = 'block'; //по клику на кнопку показывается модальное окно
+        });
+
+        document.addEventListener('mousedown', function(event){ //берем весь документ, и ловим все кроме модального окна 
+            //Можно использовать при всплывающем меню
+            if (!modal.contains(event.target) && event.target !== openModalBtn) {
+                modal.style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+</html>

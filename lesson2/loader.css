@@ -1,0 +1,30 @@
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+ 
+  
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.loader .fa-spinner {
+    font-size: 48px;
+    color: #333;
+    animation: spin 1s linear infinite;
+} 
+
+/* скрыть контент при отображении прелоадера */
+.hidden {
+    display: none;
+}

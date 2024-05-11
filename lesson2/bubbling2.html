@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bubbling.css">
+</head>
+<body>
+    <ul id="list">
+        <li>Элемент 1</li>
+        <li>Элемент 2</li>
+        <li>Элемент 3</li>
+        <li>Элемент 4</li>
+        <li>Элемент 5</li>
+    </ul>
+
+    <script>
+        const list = document.getElementById("list");
+
+        list.addEventListener("click", function(e) { //здесь работаем с дочерними элементами через родителя (list) путем погружения
+            if (e.target.tagName === 'LI') {
+                console.log(`Вы нажали на ${e.target.textContent}`); //Вы нажали на Элемент 1
+            }
+        });
+    </script>
+
+</body>
+</html>

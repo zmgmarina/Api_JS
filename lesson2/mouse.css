@@ -1,0 +1,10 @@
+.menu-item {
+    padding: 10px;
+    cursor: pointer; /* при наведении видим указывающий пальчик*/
+}
+
+
+/*Вместо mouseover и mouseout для выделения элементов можно использовать hover*/
+/* .menu-item:hover {
+    background-color: #fff;
+} */

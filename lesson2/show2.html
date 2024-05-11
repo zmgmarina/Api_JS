@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="button" onclick="handler(this)">Cкрыть</button> 
+    <!-- Здесь this будет равен элементу, из которого произошёл вызов -->
+    <pre id="Lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque molestiae tenetur cumque laudantium, dolorum est eveniet quis aspernatur laborum autem soluta animi fuga corporis! Odit eum molestias neque at ad.</pre>
+
+<script>
+    let show = true;
+    let lorem  = document.getElementById('Lorem');
+    // let button = document.getElementById('button');
+
+    function handler(inner) {
+        show = !show;
+        lorem.hidden = !show;
+        // button.innerHTML = !show ? 'Показать' : 'Скрыть';
+        // console.dir(inner.innerHTML);
+        inner.innerHTML = !show ? 'Показать' : 'Скрыть' ;
+        inner.style.background = show ? 'red' : 'yellow';
+        return inner;       
+    }
+</script>
+
+</body>
+</html>

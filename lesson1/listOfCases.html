@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Список дел</title>
+  </head>
+  <body>
+    <h1>Список дел</h1>
+    <input type="text" class="task-input" placeholder="Добавить задачу" />
+    <button class="add-button">Добавить</button>
+    <ul class="task-list"></ul>
+
+    <script>
+      const taskInput = document.querySelector(".task-input");
+      const addButton = document.querySelector(".add-button");
+      const taskList = document.querySelector(".task-list");
+
+      //Восстановление списка дел из локального хранилища при загрузке страницы(если он там имеется)
+      if (localStorage.getItem("tasks")) { //получаем список 
+        taskList.innerHTML = localStorage.getItem('tasks'); //и передаем в лист
+      }
+
+      addButton.addEventListener('click', () => {
+        const taskDescription = taskInput.value;//обращаемся к полю ввода и получаем его значение
+        if (taskDescription !== '') {
+          //проверяем поле ввода, если не пустое, создаем элемент li
+          const listItem = document.createElement('li');
+          listItem.classList.add("task-item"); // даем название класса и создаем содержимое html
+          listItem.innerHTML = ` 
+<span class="task-description">${taskDescription}</span>
+<button class="delete-button">Удалить</button>
+             `;
+          taskList.appendChild(listItem); //listItem добавляем в taskList
+
+          taskInput.value = ''; //обнуляем значение поля ввода
+
+          //Сохранение списка дел в локал. хранилище
+          localStorage.setItem('tasks', taskList.innerHTML);
+        }
+      });
+
+      //удаление элемента списка
+      taskList.addEventListener('click', event => {
+        if(event.target.classList.contains('delete-button')) { //
+            const listItem = event.target.closest('li');//при нажатии на кнопку удалить находим ближайший элемент li
+            listItem.parentNode.removeChild(listItem); // и у родительского элемента удаляем дочерний listItem
+
+            //Обновляем список дел в локальном хранилище
+            localStorage.setItem('tasks', taskList.innerHTML);
+        }
+      });
+    </script>
+  </body>
+</html>
