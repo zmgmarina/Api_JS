@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="questions.css">
+    <title>Document</title>
+</head>
+<body>
+<!-- Cоздать простой онлайн опросник, который позволяет пользователям отвечать на вопросы с вариантами ответов. Ваша задача - разработать интерфейс и функциональность
+для этого опросника, используя HTML, CSS и JavaScript.
+1. Создайте интерфейс с несколькими вопросами и вариантами ответов. Каждый вопрос должен иметь несколько вариантов ответов.
+2. Реализуйте обработку событий, чтобы пользователи могли выбирать варианты ответов.
+3. Добавьте кнопку "Завершить опрос", которая будет показывать результаты опроса.
+4. При нажатии на кнопку "Завершить опрос", вы должны проверить, что пользователь ответил на все вопросы, и отобразить выбранные им варианты ответов.
+5. Если пользователь не ответил на все вопросы, покажите ему сообщение о необходимости ответить на все вопросы перед завершением опроса. -->
+
+    <div class="question">
+        <p>Вопрос 1: Какой ваш любимый цвет?</p>
+        <div class="options">
+            <label><input type="radio" name="q1" value="Синий">Синий</label>
+            <label><input type="radio" name="q1" value="Зеленый">Зеленый</label>
+            <label><input type="radio" name="q1" value="Красный">Красный</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>Вопрос 1: Какое ваше любимое животное?</p>
+        <div class="options">
+            <label><input type="radio" name="q2" value="Кошка">Кошка</label>
+            <label><input type="radio" name="q2" value="Собака">Собака</label>
+            <label><input type="radio" name="q2" value="Попугай">Попугай</label>
+        </div>
+    </div>
+
+    <button type="submit" id="submit">Завершить опрос</button>
+
+    <div class="result" style="display: none;">
+        <p>Результаты</p>
+        <p id="result-q1">Вопрос 1: <span></span> </p>
+        <p id="result-q2">Вопрос 2: <span></span> </p>
+    </div>
+
+    <script>
+        const submitButton = document.getElementById('submit');
+        const resultContainer = document.querySelector('.result');
+        const resultQ1 = document.getElementById('result-q1').querySelector('span');
+        const resultQ2 = document.getElementById('result-q2').querySelector('span');
+
+        submitButton.addEventListener('click', function(e) {
+            const q1Answer = document.querySelector('input[name="q1"]:checked');//если этот элемент выбранный (checked)
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+
+            if (q1Answer && q2Answer) { //если оба ответа существуют, мы их должны отобразить
+                resultQ1.textContent = q1Answer.value;
+                resultQ2.textContent = q2Answer.value;
+
+                resultContainer.style.display = 'block'; // показываем блок с результатом
+            } else {
+                alert('Вы ответили не на все вопросы')
+            }
+        })
+    </script>
+
+</body>
+</html>

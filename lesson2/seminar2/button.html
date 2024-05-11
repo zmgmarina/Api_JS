@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- У вас есть кнопка "Купить". Создайте скрипт, который при клике на эту кнопку меняет её текст на "Товар
+добавлен в корзину" в течение 2 секунд, а затем возвращает исходный текст "Купить". В обработчике
+события клика также проверьте, является ли событие доверенным. Если событие является доверенным,
+выполните изменение текста кнопки и убедитесь, что после 2 секунд текст возвращается в исходное
+состояние -->
+        
+<button id="buyButton">Купить</button>
+
+<script>
+    buyButton.addEventListener("click", function (e) {
+        if (e.isTrusted) { //если клик является доверенным событием 
+            const originalText = buyButton.textContent; //текст сохраняем
+            buyButton.textContent = 'Товар добавлен в корзину'; //кнопке присваиваем другой текст
+            setTimeout(() => { //и через две секунды возвращается исходный текст
+                buyButton.textContent = originalText;
+                
+            }, 2000);
+        }
+    } );
+</script>
+
+</body>
+</html>

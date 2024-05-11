@@ -1,0 +1,33 @@
+.page-title {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.51, 0.92, 0.24, 1);
+}
+
+.slider img {
+    width: 70%;
+}
+
+.prev-button,
+.next-button {
+    width: 180px;
+    height: 80px;
+    background-color: #e5dbdb;
+    border: none;
+    font-size: 16px;
+    color: rgb(63, 61, 61);
+    border-radius:  3px 3px ;
+}
+

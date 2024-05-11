@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<!-- Вашей задачей является создание веб-слайдера для отображения изображений на веб-странице. Слайдер должен позволять переключаться между изображениями и отображать их в центре экрана.
+1. Создайте интерфейс веб-страницы, который включает в себя следующие элементы:
+a. Контейнер для отображения текущего изображения.
+b. Кнопки "Предыдущее изображение" и "Следующее изображение" для переключения между изображениями.
+c. Навигационные точки (индикаторы) для быстрого переключения между изображениями.
+2. Используйте HTML для создания элементов интерфейса.
+3. Используйте JavaScript для обработки событий:
+a. При клике на кнопку "Предыдущее изображение" должно отображаться предыдущее изображение.
+b. При клике на кнопку "Следующее изображение" должно отображаться следующее изображение.
+c. При клике на навигационные точки, слайдер должен переключаться к соответствующему изображению.
+4. Слайдер должен циклически переключаться между изображениями, то есть после последнего изображения должно отображаться первое, и наоборот.
+5. Добавьте стилизацию для слайдера и элементов интерфейса с использованием CSS для улучшения внешнего вида. -->
+
+  <main>
+    <h1 class="page-title">Блюда нашего ресторана</h1>
+    <div class="content">
+      <div>
+        <button class="prev-button">Предыдущее изображение</button>
+      </div>
+      
+      <div class="slider-container">
+          <div class="slider">
+            <img src="https://img.freepik.com/free-photo/closeup-shot-delicious-pasta-white-plate_181624-28817.jpg?w=1380&t=st=1715457997~exp=1715458597~hmac=54da5d1512c0e9684ad8e769613623abe2adfcc1d0286c5ccf27b08dad762088" alt="Photo">
+            <img src="https://img.freepik.com/free-photo/khachapuri-adjarian-open-pie-with-mozzarella-egg-georgian-cuisine_2829-14431.jpg?w=1380&t=st=1715458037~exp=1715458637~hmac=6c78ac99e33e7cefe52bd31c6eed8a933f995a9dd40a379658ad9e030c1efb24" alt="Photo">
+            <img src="https://img.freepik.com/premium-photo/bowl-salad-with-salad-top_781284-10295.jpg?w=1380" alt="Photo">
+            <img src="https://img.freepik.com/free-photo/top-view-tasty-cooked-fish-with-fresh-vegetables-dark-table_140725-143785.jpg?w=1380&t=st=1715458234~exp=1715458834~hmac=6d91f43110bbed9147b4e52be12519dba9965054abdf2268e00b997d68525e79" alt="Photo">
+            <img src="https://img.freepik.com/free-photo/top-view-delicious-vegetable-salad-with-lemon-slices-green-salad-dark-background-meal-diet-salad-health-food_140725-96847.jpg?w=1380&t=st=1715458257~exp=1715458857~hmac=36f7591aed80b3d81621328fcff18c9a23fc327dcdd19c5115b317530c8cbf37" alt="Photo">
+            
+          </div>
+      </div>
+
+      <div>
+        <button class="next-button">Следующее изображение</button>
+      </div>
+    </div>
+    </main>
+    
+    <script>
+       
+      const slider = document.querySelector('.slider');
+      const prevButton = document.querySelector('.prev-button');
+      const nextButton = document.querySelector('.next-button');
+      const slides = Array.from(slider.querySelectorAll('img'));
+      const slideCount = slides.length;
+      let slideIndex = 0;
+
+      prevButton.addEventListener('click', showPreviousSlide);
+      nextButton.addEventListener('click', showNextSlide);
+
+      // Функция для показа предыдущего слайда
+      function showPreviousSlide() {
+        slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+        updateSlider();
+      }
+
+      // Функция для показа следующего слайда
+      function showNextSlide() {
+        slideIndex = (slideIndex + 1) % slideCount;
+        updateSlider();
+      }
+
+      // Функция для обновления отображения слайдера
+      function updateSlider() {
+        slides.forEach((slide, index) => {
+          if (index === slideIndex) {
+            slide.style.display = 'block';
+          } else {
+            slide.style.display = 'none';
+          }
+        });
+      }
+
+      updateSlider();
+    </script>
+  </body>
+</body>
+</html>

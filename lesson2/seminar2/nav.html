@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="nav.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Вам необходимо создать навигационное меню для веб-сайта, в
+котором меняется активный пункт при клике без фактического
+перехода на другие страницы. Меню должно обладать следующими
+характеристиками:
+1. Подсветка активного пункта: При клике на пункт меню он
+должен становиться активным, и для активного пункта должен
+применяться определенный стиль (например, изменение цвета
+фона). Если выбрать другой пункт, предыдущий должен
+перестать быть активным.
+2. Эффекты наведения: При наведении курсора на пункты меню
+должны применяться эффекты (например, изменение цвета
+текста или фона) для подсказки пользователю, что пункт меню
+является интерактивным. -->
+    <header>
+      <nav>
+        <ul class="menu" id="menu">
+          <li><a href="#" class="menu__link">Главная</a></li>
+          <li><a href="#" class="menu__link">О нас</a></li>
+          <li><a href="#" class="menu__link">Услуги</a></li>
+          <li><a href="#" class="menu__link">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <script>
+        
+        menu.addEventListener("click", function(e) {
+            if (e.target.classList.contains("menu__link")) {
+                e.preventDefault(); //отмена действия браузера по умолчанию (отмена перехода поссылке)
+                document.querySelectorAll('.menu__link').forEach(item => {
+                    item.classList.remove('active'); //у всех элементов у которых был active - удаляем
+                    e.target.classList.add('active'); // элемент на который нажимаем, у каких не было - добавляем
+                });
+            }
+        } );
+    </script>
+  </body>
+</html>

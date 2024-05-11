@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="modal.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="openModalBtn">Открыть модальное окно</button>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h2>Модальное окно</h2>
+        <p>Нажмите кнопку "Закрыть, чтобы закрыть окно."</p>
+        <button id="closeModalBtn">Закрыть</button>
+      </div>
+    </div>
+
+    <script>
+      openModalBtn.addEventListener("click", function (e) {
+        modal.style.display = "block";
+      });
+      closeModalBtn.addEventListener("click", function (e) {
+        modal.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
