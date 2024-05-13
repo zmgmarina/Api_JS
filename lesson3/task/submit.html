@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Есть три основных способа отправить форму на сервер:
+1. можно в форме сделать элемент input с типом submit или image. Появится кнопка
+с надписью по умолчанию «Отправить» при нажатии на которую форма отправится
+2. можно кликнуть на любое поле формы и нажать Enter
+3. можно отправить форму из скрипта, использовав метод form.submit(). -->
+
+        <form name="superForm" onsubmit="console.log('Форма отправлена'); return false">
+        email: <input type="email" name="email">
+        checkbox: <input type="checkbox"checkbox>
+        <input type="submit"> 
+    </form>
+    <script>
+        const form = document.forms.superForm;
+
+        form.checkbox.oninput = () => { //в момент события input т.е. в момент времени когда checkbox выбран(например пользлователь выбирает "согласиться") мы можем отправить форму
+            
+        }
+        //результат смотреть в url адресе
+
+        //form.submit() можно прикрутить к любому блоку div  и он отправится 
+       
+    </script>
+</body>
+</html>

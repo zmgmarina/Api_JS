@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        Fetch – это метод, принимающий один или два параметра:
+→ обязательный параметр url – строка с адресом сервера, на который идёт запрос
+→ необязательный параметр options – объект, в котором задаются параметры запроса,
+→ такие как метод, заголовки и тело запроса.  -->
+    <!--
+     Как поступают данные
+1. Сначала нам приходит асинхронный ответ
+в виде встроенного объекта Response,
+в котором мы можем посмотреть код статуса HTTP.
+response.status возвращает нам HTTP-код
+ответа сервера. Просмотр кода в ответе помогает
+нам понять, что сайт доступен и нет ошибок сети.
+response.ok означает, что response.status
+находится в диапазоне 200-299.
+2. Для получения тела ответа нужно
+дополнительно вызвать метод. В классе
+Response есть несколько методов,
+позволяющие получить асинхронно
+тело ответа. 
+
+Методы response
+Для представления тела ответа нам доступны несколько методов response.
+Они возвращают ответ каждый в своём формате:
+→ response.json()
+→ response.text()
+→ response.blob()
+→ response.arrayBuffer()
+→ response.formData()
+→ response.body — объект ReadableStream, с помощью которого
+можно считывать тело запроса по частям
+→ response.headers — коллекция заголовков ответов, похожая по использованию на Map
+-->
+
+    <script>
+      // 'use strict';  // "строгий режим" - этот код работает в современном режиме
+      // (async () => {
+      //     const url = ('https://catfact.ninja/fact');
+      //     const response = await fetch(url);
+      //     console.log(response.status); //проверяем все ли в порядке
+      //     console.log(response.ok);
+      //     const fact = await response.json(); // значение которое мы получаем
+      //     console.log(fact);
+      // }); // это не работает
+
+      // или для вывода только факта
+      "use strict";
+      fetch("https://catfact.ninja/fact")
+        .then((response) => response.json())
+        .then((obj) => console.log(obj.fact));
+      //текстовый элемент уже можем использовать
+
+      //добавляем данные методом "POST"
+      ("use strict");
+      fetch("https://fakestoreapi.com/products", {
+        method: "POST",
+        body: JSON.stringify({
+          title: "test product",
+          price: 10.5,
+          description: "description",
+          image:
+            "https://gas-kvas.com/grafic/uploads/posts/2023-09/1695750438_gas-kvas-com-p-raskraski-prostie-dlya-11-let-51.png",
+          category: "electronic",
+        }),
+      })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+
+      //можем испоьзователь когда в интернет-магазине позьлователь что то выбрал, нам это нужно отдать серверу - сервер это запомнит
+    </script>
+  </body>
+</html>

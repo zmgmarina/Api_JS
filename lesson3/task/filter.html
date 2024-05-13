@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Вы разрабатываете интернет-магазин и хотите добавить
+функциональность динамического фильтрации товаров по
+категориям. У вас есть форма с выпадающим списком (select), в
+котором пользователь может выбрать категорию товаров. При выборе
+категории товаров, необходимо динамически обновлять список
+отображаемых товаров на странице, чтобы пользователь видел
+только товары из выбранной категории.
+1. Создайте интерфейс веб-страницы, который включает в себя
+следующие элементы:
+a. Выпадающий список (select) с категориями товаров.
+b. Список товаров, который будет отображать товары в
+соответствии с выбранной категорией.
+c. Каждый товар в списке должен содержать название и
+категорию.
+2. Используйте HTML для создания элементов интерфейса. -->
+
+    <h1>Выберите категорию товаров</h1>
+    <select id="categorySelect">
+      <option value="">Все категории</option>
+      <option value="Электроника">Электроника</option>
+      <option value="Бытовая техника">Бытовая техника</option>
+      <option value="Книги">Книги</option>
+      <option value="Одежда">Одежда</option>
+      <option value="Мебель">Мебель</option>
+    </select>
+
+    <h2>Товары:</h2>
+    <ul id="productList"></ul>
+
+    <script>
+      const productData = [
+          {
+              id: 1,
+              name: "Ноутбук",
+              category: "Электроника",
+          },
+          {
+              id: 1,
+              name: "Смартфон",
+              category: "Электроника",
+          },
+          {
+              id: 1,
+              name: "Стол",
+              category: "Мебель",
+          },
+          {
+              id: 1,
+              name: "Шкаф",
+              category: "Мебель",
+          },
+          {
+              id: 1,
+              name: "Энциклопедия",
+              category: "Книги",
+          },
+          {
+              id: 1,
+              name: "Словарь",
+              category: "Книги",
+          },
+          {
+              id: 1,
+              name: "Пальто",
+              category: "Одежда",
+          },
+          {
+              id: 1,
+              name: "Шапка",
+              category: "Одежда",
+          },
+          {
+              id: 1,
+              name: "Стиральная машина",
+              category: "Бытовая техника",
+          },
+          {
+              id: 1,
+              name: "Блендер",
+              category: "Бытовая техника",
+          },
+
+      ]
+
+      //фунkция для отображения списка
+      function displayProducts(category) {
+          productList.innerHTML = ''; //productList д/б изначально пустым
+
+          productData.forEach(product => {
+              if (category === '' || product.category === category) {
+                  const listItem = document.createElement('li');
+                  listItem.textContent = product.name;
+                  productList.append(listItem);
+              }
+          });
+      }
+
+      categorySelect.addEventListener('change', function(e) {
+        const selectedCategory = categorySelect.value; //выбрали категорию...
+        //передали функции displayProducts
+        displayProducts(selectedCategory);
+      });
+
+      displayProducts('');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="superForm">
+      Ваш email:<input type="email" name="input" />
+      <div id="error"></div>
+    </form>
+    <script>
+      const input = document.forms.superForm.input; //можно обратиться через querySelector
+      const error = document.querySelector("#error");
+      input.onblur = function () {
+        if (!input.value.includes("@")) {
+          //не email
+          input.classList.add("invalid"); //присваиваем класс 
+          error.innerHTML = "Пожалуйста, введите правильный email"; //можно вместо innerHTML - textContent
+        }
+      };
+      input.onfocus = function () { //в момент фокусировки
+        if(this.classList.contains('invalid')) { //если содержит ошибку удаляем ее
+          this.classList.remove('invalid');
+          error.innerHTML = '';
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        Прерывание запроса
+    AbortController – класс, используемый
+    для отмены fetch и других асинхронных запросов.
+    Для fetch в параметрах указывается свойство
+    signal, в который мы записываем контроллер,
+    созданный с помощью конструктора класса
+    AbortController. Далее мы вызываем в нужном
+    месте метод abort(). И всё, работа fetch прервана. -->
+
+    <script>
+        const controller = new AbortController();
+
+        fetch(url, {
+            signal: controller.signal
+        });
+
+        controller.abort(); //здесь аккуратно с бесплатными Api могут не подойти
+    </script>
+    
+</body>
+</html>

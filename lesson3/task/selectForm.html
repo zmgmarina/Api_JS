@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="superForm">
+        <select name="selectForm" multiple>
+            <option value="GeeckBrains" selected>Гик Брейнс</option> <!-- selected - атрибут в <option>, чтобы он был выбран по умолчанию при первой загрузке страницы -->
+            <option value="SkillBox" selected>СкилБокс</option>
+            <option value="SkillFactory">Скилфактори</option>
+        </select>
+    </form>
+
+    <script>
+        const select = document.forms.superForm.selectForm;
+        select.value = "SkillFactory"; //этот элемент выбран
+        
+        // отбор элементов select с атрибутом selected
+        const selected = Array.from(select.options)
+            .filter(option => option.selected)
+            .map(option => option.value);
+        console.log(selected);
+    </script>
+</body>
+</html>

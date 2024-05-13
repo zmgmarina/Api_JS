@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Объекты FormData – позволяют автоматически генерировать готовый объект из формы
+и отправкой её посредством сетевых запросов на сервер.  -->
+
+<!-- 
+    Методы класса FormData:
+→ formData.delete(name) – удаляет поле с именем name
+→ formData.get(name) – возвращает значение поля с именем name
+→ formData.has(name) – если существует поле с именем name, то возвращает true, иначе false
+→ formData.append(name, value) – добавляет к объекту поле с именем name и значением value
+→ formData.append(name, blob, fileName) – добавляет поле с файлом, который записывается
+→ во второй аргумент, третий аргумент задаёт имя файла
+ -->
+
+
+    <form name="superForm">
+        title: <input name="title" value="test product">
+        <br>
+        price: <input name="price" type="number" value="10.50">
+        <br>
+        image: <input name="image" value="https://i.pravatar.cc">
+        <br>
+        category: <input name="category" value="electronic">
+        <input type="submit">
+    </form>
+
+    <script>
+        'use strict';
+        const form = document.forms.superForm;
+        form.onsubmit = async (e) => {  // находим форму в момент отправки используем async
+            e.preventDefault(); //останавливаем отправку
+
+            let response = await fetch('https://fakestoreapi.com/products', {
+                method: 'POST',                         
+                body: new FormData(form)          //дальше мы хоти отправить нашу форму  
+            });
+
+            let result = await response.json(); //получаем результат в json b распечатываем
+            console.log(result);
+        };
+
+        (async () => {
+            //Шаг 1. Начинаем загрузку fetch, получаем поток для чтения 
+            let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits?per_page=100');
+            const reader = response.body.getReader();
+
+            //Шаг 2. считываем данные:
+            let receivedLength = 0; //количество байт, полученных на данный момент 
+            let chunks = []; // массив полученных двоичных фрагментов (составляющих тело ответа)  
+            while (true) {
+                const {done, value } = await reader.read(); //получаем read значение ...
+
+                if (done) break; //если выполнено - остановиться
+
+                chunks.push(value); //пушим значение 
+                receivedLength += value.length; //суммируем length
+
+                console.log(`Получено  ${receivedLength} байт`)
+            }
+
+            //Шаг 3. Соединяем фрагменты в общий типизированный массив Uint8Array
+            let chunksAll = new Uint8Array(receivedLength);
+            let position = 0;
+            for (let chunk of chunks) {
+                chunksAll.set(chunk, position);
+                position += chunk.length; //
+            } 
+
+            //Шаг 4. декорируем Uint8Array обратно  в строку
+            let result = new TextDecoder("utf-8").decode(chunksAll);
+
+            //Готово!
+            let commits = JSON.parse(result);
+            console.log(commits); 
+        
+        })();
+
+
+    
+    </script>
+</body>
+</html>

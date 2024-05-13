@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  </head>
+  <body>
+    <!-- Вы разрабатываете веб-приложение для выбора и отображения данных о странах. У вас есть форма, включающая элемент select  , в котором пользователь может выбрать определенную страну. При выборе страны, вам необходимо динамически обновлять другой элемент на странице, например, отображать информацию о столице выбранной страны.-->
+
+    <h1>Выберите страну:</h1>
+    <form id="country-form">
+      <select id="country-select">
+        <option value="">Выберите страну</option>
+        <option value="russia">Россия</option>
+        <option value="usa">США</option>
+        <option value="china">Китай</option>
+      </select>
+    </form>
+
+    <h2>Столица:</h2>
+    <p id="capital-info">Выберите страну, чтобы узнать столицу</p>
+
+    <script>
+      //ловим элементы: select и текстовое окно в котором будет отображаться информация 
+      const selectElement = document.getElementById('country-select');
+      const capitalInfoElement = document.getElementById('capital-info');
+
+
+      // Событие onchange происходит, когда значение элемента было изменено.
+      //выбираем элемент select
+      selectElement.onchange = function () {
+        const selectedCountry = selectElement.value;
+        console.log(selectedCountry);
+        let capital = ""; // пока это пустая строка
+      
+      //Выбираем столицу в зависимости от выбранной страны и сохраняем в переменной capital
+      switch (selectedCountry) {
+        case 'russia':
+          capital = 'Москва';
+          break;
+        case 'usa':
+          capital = 'Вашингтон';
+          break;
+        case 'china':
+          capital = 'Пекин';
+          break;
+        default:
+          capital = 'Выберите страну, чтобы узнать столицу';
+          break;
+      }
+      //Обновляем информацию о столице на странице
+      capitalInfoElement.textContent = capital;
+      };
+    </script>
+  </body>
+</html>

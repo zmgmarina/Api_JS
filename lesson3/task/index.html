@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+  <body>
+    <form name="superForm">
+      <input name="first" value="1000" />
+      <input name="second" value="700" />
+    </form>
+
+    <form name="superForm">
+        <input name="first" value="800" />
+        <input name="second" value="500" />
+      </form>
+
+    <script>
+      console.log(document.forms.superForm); //вывод формы в консоль
+      console.log(document.forms[1]); //вызов формы по индексу
+
+      const form = document.forms.superForm;
+      form.elements.second.value = 444;
+      console.log(form.elements.second);
+    </script>
+  </body>
+</html>
